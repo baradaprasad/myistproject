@@ -1,0 +1,16 @@
+.login-main{
+    height: 100%;
+    align-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.log-sub-main{
+height: auto;
+width: 45%;
+margin: 10px;   
+border-radius:10px;
+background: whitesmoke;
+padding: 15px;
+}

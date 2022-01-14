@@ -1,0 +1,35 @@
+
+
+/* ***input  Field**** */
+.inp{
+    width: 100%;
+    padding: 10px 18px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+/* **************************************************** */
+/* ********Button***** */
+.btn{
+    color: white;
+    padding: 8px 8px;
+    margin: 8px 0;
+    border-radius:40px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+.btn-blue{
+    background: blue;
+}
+.btn-green{
+  background: green;
+}
+.btn-red{
+  background: red;
+}
