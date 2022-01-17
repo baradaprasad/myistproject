@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Input, Layout, Button, Table, Space } from 'antd';
 import './dashboard.css'
 import { useHistory } from 'react-router-dom';
 import Additem from '../Additem/Additem';
+
 export default function Dashboard() {
   const { Header, Content, Footer } = Layout;
   const { Search } = Input;
   const [searchText, setSearchText] = useState("")
-
+  const [newUser, setNewUser] = useState([])
   const [filterArray, setFilterArray] = useState([])
+  let key=6;
   const [user, setUser] = useState([
     {
       key: '1',
@@ -91,6 +93,18 @@ export default function Dashboard() {
     setSearchText(name)
     setFilterArray(newArr)
   }
+  const addItem=(item)=>{
+    item.key=key+1
+    setUser([item])
+  }
+
+  // useEffect(() => {
+  //   setNewUser (localStorage.getItem('product'));
+  // }, [localStorage.getItem('product')]);
+  // console.log(newUser);
+
+
+
 
   return (
     <div style={{ height: '100%' }}>
@@ -100,8 +114,7 @@ export default function Dashboard() {
             <div />
             <div className='dashboard' >
               <h1 style={{ color: 'white' }}>Welcome</h1>
-              <Button className='dashboard' onClick={onLogOut} >Logout</Button>
-
+              <Button className='dashboard' onClick={onLogOut} >LOGOUT</Button>
             </div>
           </Header>
         </div>
@@ -110,11 +123,11 @@ export default function Dashboard() {
           <Content style={{ padding: '25px 50px' }}>
             <div className="site-layout-content">
               <div>
-                <Additem  />
+                <Additem onAdd={addItem} />
               </div>
               <Search placeholder="Search by name" onSearch={onSearchChange} enterButton />
               <div>
-                <Table columns={columns} dataSource={searchText?filterArray: user} />
+                <Table columns={columns} dataSource={searchText ? filterArray : user} />
               </div>
             </div>
           </Content>

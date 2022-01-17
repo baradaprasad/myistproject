@@ -1,5 +1,5 @@
 /* Ant Design */
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css';
 
 /* *************************** */
 import './App.css';
@@ -10,16 +10,12 @@ import Dashboard from './Components/Dashboard/Dashboard'
 
 function App() {
   return (
-    <div style={{height:'100%'}}>
-     <Router>
+    <div style={{ height: '100%' }}>
+      <Router>
         <Switch>
-          {/* <Route path="/" exact component={HomeRoute }/> */}
           <Route path="/Login" component={Login} />
           <Route path="/Signup" component={Signup} />
           <Route path="/Dashboard" component={Dashboard} />
-          {/* <Route path="/" ></Route>
-                  <Route path="/" ></Route>
-                  <Route path="/" ></Route> */}
         </Switch>
       </Router>
     </div>
