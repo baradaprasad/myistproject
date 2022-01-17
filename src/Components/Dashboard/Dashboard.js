@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState,useMemo} from 'react'
 import { Input, Layout, Button, Table, Space } from 'antd';
 import './dashboard.css'
 import { useHistory } from 'react-router-dom';
@@ -8,9 +8,7 @@ export default function Dashboard() {
   const { Header, Content, Footer } = Layout;
   const { Search } = Input;
   const [searchText, setSearchText] = useState("")
-  const [newUser, setNewUser] = useState([])
   const [filterArray, setFilterArray] = useState([])
-  let key=6;
   const [user, setUser] = useState([
     {
       key: '1',
@@ -94,14 +92,29 @@ export default function Dashboard() {
     setFilterArray(newArr)
   }
   const addItem=(item)=>{
-    item.key=key+1
-    setUser([item])
+    const copyItem={...item}
+    copyItem.key=(user.length+1).toString();
+    // item.key=key+1
+    console.log([...user,copyItem])
+    setUser([...user,copyItem])
   }
 
   // useEffect(() => {
   //   setNewUser (localStorage.getItem('product'));
   // }, [localStorage.getItem('product')]);
   // console.log(newUser);
+  
+  const userName=useMemo(() => {
+    const strUser = localStorage.getItem('product');
+    let user = {}
+    if (strUser) {
+      user = JSON.parse(strUser)
+    }
+    if (user.email && user.password) {
+      return user.fname
+    }
+    return ""
+  },[])
 
 
 
@@ -113,7 +126,7 @@ export default function Dashboard() {
           <Header>
             <div />
             <div className='dashboard' >
-              <h1 style={{ color: 'white' }}>Welcome</h1>
+              <h1 style={{ color: 'white' }}>Welcome {userName} </h1>
               <Button className='dashboard' onClick={onLogOut} >LOGOUT</Button>
             </div>
           </Header>
