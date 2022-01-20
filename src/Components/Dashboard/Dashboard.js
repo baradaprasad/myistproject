@@ -50,6 +50,7 @@ export default function Dashboard() {
   ])
   const history = useHistory();
   const onLogOut = () => {
+    localStorage.removeItem('product')
     history.push("/Login")
   }
   const onDelete = (index) => {
@@ -99,10 +100,7 @@ export default function Dashboard() {
     setUser([...user,copyItem])
   }
 
-  // useEffect(() => {
-  //   setNewUser (localStorage.getItem('product'));
-  // }, [localStorage.getItem('product')]);
-  // console.log(newUser);
+  
   
   const userName=useMemo(() => {
     const strUser = localStorage.getItem('product');
